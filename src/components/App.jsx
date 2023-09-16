@@ -5,8 +5,6 @@ import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-// Notify.failure('Qui timide rogat docet negare');
-
 const notifyInit = Notify.init({
   width: '280px',
   position: 'center-center',
@@ -51,13 +49,16 @@ export class App extends Component {
     );
     if (isTrue) {
       Notify.info(
-        `${newContact.name} is already in your Phonebook!`,
+        `${newContact.name} is already in your Contact List!`,
         notifyInit
       );
       return;
     }
     this.setState(({ contacts }) => ({ contacts: [newContact, ...contacts] }));
-    Notify.success(`${newContact.name} added to your Phonebook!`, notifyInit);
+    Notify.success(
+      `${newContact.name} added to your Contact List!`,
+      notifyInit
+    );
   };
 
   getFilterContacts = () => {
@@ -66,11 +67,12 @@ export class App extends Component {
       name.toLowerCase().includes(filter.toLowerCase().trim())
     );
   };
+
   removeContact = (id, name) => {
     this.setState(prev => ({
       contacts: prev.contacts.filter(contact => contact.id !== id),
     }));
-    Notify.failure(`${name} removed from your Phonebook!`, notifyInit);
+    Notify.failure(`${name} removed from your Contact List!`, notifyInit);
   };
 
   handleFilter = ({ target: { value } }) => {

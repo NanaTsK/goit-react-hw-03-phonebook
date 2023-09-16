@@ -41,6 +41,7 @@ export class ContactForm extends Component {
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            // pattern="^[a-zA-Zа-яА-Я]+([' \-]?[a-zA-Zа-яА-Я]+)*$"
             title="Name may contain up to 16 letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Comte d'Artagnan"
             maxLength="16"
             autoComplete="off"
