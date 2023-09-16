@@ -5,6 +5,8 @@ import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+// Notify.failure('Qui timide rogat docet negare');
+
 const notifyInit = Notify.init({
   width: '280px',
   position: 'center-center',
@@ -64,10 +66,11 @@ export class App extends Component {
       name.toLowerCase().includes(filter.toLowerCase().trim())
     );
   };
-  removeContact = id => {
+  removeContact = (id, name) => {
     this.setState(prev => ({
       contacts: prev.contacts.filter(contact => contact.id !== id),
     }));
+    Notify.failure(`${name} removed from your Phonebook!`, notifyInit);
   };
 
   handleFilter = ({ target: { value } }) => {
